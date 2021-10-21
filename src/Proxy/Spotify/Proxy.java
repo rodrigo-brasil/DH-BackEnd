@@ -10,11 +10,15 @@ public class Proxy implements IDownload {
 
     @Override
     public String download(String musica) {
-        if (usuario.isPremium()){
+        if (usuario.isPremium()) {
+            String donwload = servico.download(musica);
+            if (donwload == null) {
+                System.out.println("Música não encontrada!");
+                return null;
+            }
             System.out.println(musica + " download completo");
-            return servico.download(musica);
-        }
-        else{
+            return donwload;
+        } else {
             System.out.println("Download de músicas são para usuários premiums");
             return null;
         }
