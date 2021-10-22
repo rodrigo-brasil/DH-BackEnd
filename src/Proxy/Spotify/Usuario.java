@@ -1,9 +1,14 @@
 package Proxy.Spotify;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Usuario {
     String nome;
     private boolean isPremium = false;
     private IDownload downloader ;
+
+    private List<String> offlinePlaylist = new ArrayList<>();
 
     public Usuario(String nome, Boolean isPremium) {
         this.nome = nome;
@@ -12,7 +17,9 @@ public class Usuario {
     }
 
     public void salvarMusicaOffline(String musica){
-        downloader.download(musica);
+      String download =  downloader.download(musica);
+      if(download != null)
+          offlinePlaylist.add(download);
     }
 
     public boolean isPremium() {
