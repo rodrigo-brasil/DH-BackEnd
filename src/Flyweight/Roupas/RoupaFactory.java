@@ -1,16 +1,21 @@
 package Flyweight.Roupas;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class RoupaFactory {
-    private static List<Roupa> lista = new ArrayList<>();
+    private static HashMap<String,Roupa> lista = new HashMap();
 
     public static Roupa getRoupa(String tamanho, String tipo, boolean eNova, boolean importado) {
-        Roupa roupa = lista.stream().filter(roupa1 -> roupa1.equals(new Roupa(tamanho, tipo, eNova, importado))).findFirst().orElse(null);
+        Roupa roupa = lista.get(tipo);
         if (roupa == null) {
             roupa = new Roupa(tamanho, tipo, eNova, importado);
-            lista.add(roupa);
+            lista.put(tipo,roupa);
+        }else{
+            roupa.seteNova(eNova);
+            roupa.setImportado(importado);
+            roupa.setTamanho(tamanho);
         }
         return roupa;
     }

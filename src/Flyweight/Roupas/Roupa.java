@@ -15,16 +15,15 @@ public class Roupa {
         this.importado = importado;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Roupa)) return false;
-        Roupa roupa = (Roupa) o;
-        return eNova == roupa.eNova && importado == roupa.importado && Objects.equals(tamanho, roupa.tamanho) && Objects.equals(tipo, roupa.tipo);
+    public void setTamanho(String tamanho) {
+        this.tamanho = tamanho;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(tamanho, tipo, eNova, importado);
+    public void seteNova(boolean eNova) {
+        this.eNova = eNova;
+    }
+
+    public void setImportado(boolean importado) {
+        this.importado = importado;
     }
 }
