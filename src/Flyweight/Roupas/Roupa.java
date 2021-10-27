@@ -26,4 +26,20 @@ public class Roupa {
     public void setImportado(boolean importado) {
         this.importado = importado;
     }
+
+    public String getTamanho() {
+        return tamanho;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public boolean iseNova() {
+        return eNova;
+    }
+
+    public boolean isImportado() {
+        return importado;
+    }
 }
