@@ -3,6 +3,7 @@ package Log4j.MesaMedia;
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ListaInteiros {
@@ -10,6 +11,10 @@ public class ListaInteiros {
     private static final Logger logger = Logger.getLogger(ListaInteiros.class);
 
     private List<Integer> listaInteiros = new ArrayList<>();
+
+    public ListaInteiros(int ...numeros) {
+        Arrays.stream(numeros).forEach(numero -> listaInteiros.add(numero));
+    }
 
     public void add(int numero) {
         listaInteiros.add(numero);
@@ -25,11 +30,7 @@ public class ListaInteiros {
         if (listaInteiros.size() <= 0)
             throw new Exception("Lista vazia");
 
-        double media = 0;
-        for (int numero : listaInteiros) {
-            media += numero;
-        }
-        media = media / listaInteiros.size();
+        Double media = listaInteiros.stream().mapToDouble(Integer::doubleValue).average().orElse(0);
 
         logger.info("Média é igual " + media);
     }
